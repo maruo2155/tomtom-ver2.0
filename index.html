@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とむとむ利根店給料計算</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <h1>とむとむ利根店給料計算</h1>
+            <div class="header-btn-group">
+                <button id="config-btn" class="config-btn">設定</button>
+                <button id="reset-btn" class="reset-btn">リセット</button>
+            </div>
+        </div>
+        <div class="header-controls">
+            <select id="year-select"></select>
+            <span>年</span>
+            <select id="month-select"></select>
+            <span>月</span>
+        </div>
+        <div class="base-wage" id="base-wage-display">基本給: 1080円/時</div>
+    </header>
+
+    <div id="days-container">
+        <!-- ここに日付カードがJavaScriptで生成されます -->
+    </div>
+
+    <!-- 設定モーダル -->
+    <div id="config-modal" class="modal">
+        <div class="modal-content">
+            <h2>時給設定</h2>
+            
+            <div class="wage-mode-select">
+                <label class="radio-label">
+                    <input type="radio" name="wageMode" value="all" id="mode-all" checked>
+                    すべての日
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="wageMode" value="custom" id="mode-custom">
+                    カスタム
+                </label>
+            </div>
+
+            <!-- 全日一律設定 -->
+            <div id="all-wage-section" class="wage-section">
+                <div class="config-row">
+                    <label>基本時給: </label>
+                    <input type="number" id="all-wage-input" value="1080" min="0"> 円/時
+                </div>
+            </div>
+
+            <!-- カスタム設定 -->
+            <div id="custom-wage-section" class="wage-section hidden">
+                <p class="section-desc">日付範囲ごとに時給を設定してください。</p>
+                <div id="custom-rules-container">
+                    <!-- カスタムルールが動的に追加されます -->
+                </div>
+                <button type="button" id="add-rule-btn" class="add-btn">+ 時給を追加</button>
+            </div>
+
+            <div class="modal-actions">
+                <button id="save-config-btn" class="save-btn">保存</button>
+                <button id="close-config-btn" class="cancel-btn">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-row">
+            <div class="total-label">合計金額</div>
+            <div class="total-amount"><span id="total-price">0</span>円</div>
+        </div>
+        <div class="footer-row">
+            <div class="total-label time-label">合計勤務時間</div>
+            <div class="total-time"><span id="total-hours">0</span>時間 <span id="total-mins">0</span>分</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

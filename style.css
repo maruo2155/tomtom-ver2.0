@@ -1,0 +1,399 @@
+:root {
+    --primary-color: #e84393;
+    --bg-color: #fff7f9;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-sub: #8e8e93;
+    --border-color: #f0ccd5;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    padding-bottom: 120px; /* フッターが2段になった分、余白を増やす */
+}
+
+header {
+    background-color: var(--card-bg);
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.header-btn-group {
+    position: absolute;
+    right: 0;
+    display: flex;
+    gap: 6px;
+}
+
+.config-btn, .reset-btn {
+    background-color: var(--card-bg);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.config-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+}
+
+.reset-btn {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+.reset-btn:hover {
+    background-color: #ff6b6b;
+    color: var(--card-bg);
+}
+
+.header-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+select {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    outline: none;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: #fff0f3;
+}
+
+.base-wage {
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-top: 8px;
+}
+
+#days-container {
+    padding: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.day-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(232, 67, 147, 0.08);
+    transition: box-shadow 0.2s;
+}
+
+.day-card:hover {
+    box-shadow: 0 4px 10px rgba(232, 67, 147, 0.15);
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.sunday { color: #e84393; }
+.saturday { color: #007aff; }
+
+.holiday-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    font-size: 14px;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group select {
+    width: 120px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 16px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.total-label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.time-label {
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+.total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.total-time {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+/* --- モーダル設定スタイル --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.wage-mode-select {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.radio-label {
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wage-section {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.config-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.config-row input[type="number"], .rule-row input[type="number"] {
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+}
+
+.config-row input[type="number"] {
+    width: 90px;
+}
+
+.section-desc {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.rule-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    background: var(--bg-color);
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.rule-row select {
+    padding: 4px 6px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+.rule-row input[type="number"] {
+    width: 65px;
+}
+
+.remove-rule-btn {
+    background-color: transparent;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.remove-rule-btn:hover {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.add-btn {
+    background-color: var(--bg-color);
+    border: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.2s;
+}
+
+.add-btn:hover {
+    background-color: #fff0f3;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.save-btn {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: var(--card-bg);
+    border: 1px solid var(--text-sub);
+    color: var(--text-sub);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    #days-container {
+        padding: 24px;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    header { padding: 24px; }
+    h1 { font-size: 22px; }
+    .footer-row { max-width: 600px; /* PCでは金額と時間を中央にコンパクトにまとめる */ }
+    .total-amount { font-size: 32px; }
+    .total-time { font-size: 22px; }
+}
